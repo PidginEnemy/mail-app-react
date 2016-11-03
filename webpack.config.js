@@ -24,7 +24,8 @@ module.exports = {
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.css$/, loader: 'style!css' },
-            { test: /\.(sass|scss)$/, loaders: ['style','css','sass'] }
+            { test: /\.(sass|scss)$/, loaders: ['style','css','sass','sass-resources'] }
         ]
-    }
+    },
+    sassResources: [ './client/assets/styles/mixins.scss' ]
 }
