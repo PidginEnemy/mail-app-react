@@ -24,8 +24,17 @@ module.exports = {
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.css$/, loader: 'style!css' },
-            { test: /\.(sass|scss)$/, loaders: ['style','css','sass','sass-resources'] }
+            { test: /\.(sass|scss)$/, loaders: [
+                    'style',
+                    'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                    'sass',
+                    'sass-resources'
+                ]
+            }
         ]
     },
-    sassResources: [ './client/assets/styles/mixins.scss' ]
+    sassResources: [
+        './client/assets/styles/variables.scss',
+        './client/assets/styles/mixins.scss'
+    ]
 }
