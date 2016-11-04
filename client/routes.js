@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route} from 'react-router';
+import {Router, Route, IndexRedirect} from 'react-router';
 import history from './history';
 import App from './components/App/App';
 import MailsPage from './routeHandlers/MailsPage/MailsPage';
@@ -8,6 +8,7 @@ import NotFoundPage from './routeHandlers/NotFoundPage/NotFoundPage';
 
 export default <Router history={history}>
     <Route path="/" component={App}>
+        <IndexRedirect to="/mails"/>
         <Route path="mails" component={MailsPage}/>
         <Route path="users" component={UsersPage}/>
     </Route>
