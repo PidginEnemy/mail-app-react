@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Navbar>
+                <Navbar default collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand styleName="navbar-logo">
                             <Link to="/">
@@ -20,15 +20,18 @@ class App extends Component {
                                 <span styleName="navbar-brand">ReactMail</span>
                             </Link>
                         </Navbar.Brand>
+                        <Navbar.Toggle/>
                     </Navbar.Header>
-                    <Nav>
-                        <LinkContainer to="/mails">
-                            <NavItem>Mails</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/users">
-                            <NavItem>Users</NavItem>
-                        </LinkContainer>
-                    </Nav>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <LinkContainer to="/mails">
+                                <NavItem>Mails</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to="/users">
+                                <NavItem>Users</NavItem>
+                            </LinkContainer>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Navbar>
                 <div styleName="content">
                     <div className="container">
