@@ -24,12 +24,13 @@ module.exports = {
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.css$/, loader: 'style!css' },
-            { test: /\.(sass|scss)$/, loaders: [
-                    'style',
-                    'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                    'sass',
-                    'sass-resources'
-                ]
+            {
+                test: /^((?!\.module).)*(sass|scss)$/,
+                loader: 'style!css!sass!sass-resources'
+            },
+            {
+                test: /\.module.(sass|scss)$/,
+                loader: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader!sass-resources'
             }
         ]
     },

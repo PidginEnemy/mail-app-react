@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
-import styles from './not-found.scss';
+import styles from './not-found.module.scss';
 
 const NotFoundPage = (props) => {
     return (
