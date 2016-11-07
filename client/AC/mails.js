@@ -1,4 +1,13 @@
-import { LOAD_MAILS } from '../constants';
+import { LOAD_MAILS, SET_MAIL_TYPE } from '../constants';
+
+export function setMailType(mailType) {
+    return {
+        type: SET_MAIL_TYPE,
+        payload: {
+            mailType
+        }
+    }
+}
 
 export function loadMails() {
     return (dispath, getState) => {
