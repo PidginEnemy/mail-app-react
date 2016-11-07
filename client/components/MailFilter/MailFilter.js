@@ -1,27 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MailFilterBox from '../MailFilterBox/MailFilterBox';
 
 class MailFilter extends Component {
 
     render() {
-
-        const mailTypes = [{
-            id: 1,
-            title: 'Inbox',
-            iconType: 'download'
-        }, {
-            id: 2,
-            title: 'Outbox',
-            iconType: 'upload'
-        }, {
-            id: 3,
-            title: 'Spam',
-            iconType: 'ban-circle'
-        }, {
-            id: 4,
-            title: 'Trash',
-            iconType: 'trash'
-        }];
+        
+        const { mailTypes } = this.props;
 
         const mailBoxes = mailTypes.map(mType => (
             <MailFilterBox box={mType} key={mType.id}/>
@@ -35,4 +20,12 @@ class MailFilter extends Component {
     }
 }
 
-export default MailFilter;
+export default connect(state => {
+    const { mailTypes } = state.mails;
+    return {
+        mailTypes
+    };
+}, 
+{},
+null)
+(MailFilter);
