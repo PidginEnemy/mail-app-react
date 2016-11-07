@@ -13,7 +13,7 @@ class MailList extends Component {
 
     render() {
 
-        const { loading, data } = this.props.mails;
+        const { loading, data } = this.props;
         if(loading) return <Loader/>;
 
         const mailItems = data.map((mail) => {
@@ -41,8 +41,15 @@ class MailList extends Component {
 }
 
 export default connect((state,props) => {
-        return state;
-    }, 
+        const { loading, data, mailBox } = state.mails;
+        const mailsInBox = data.filter((item) => {
+            return item.mailBoxType == mailBox;
+        });
+        return {
+            loading, 
+            data: mailsInBox
+        };
+    },
     { loadMails },
     null,
     { pure: false })
