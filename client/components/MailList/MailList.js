@@ -1,28 +1,49 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadMails } from '../../AC/mails';
 import Loader from '../Loader/Loader';
 
 class MailList extends Component {
-
-    state = {
-        isLoading: true
-    }
     
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                isLoading: false
-            });
-        },1000);
+        const { loading, loadMails } = this.props;
+        if(!loading)
+            loadMails();
     }
 
     render() {
 
-        const loader = this.state.isLoading ? <Loader/> : null;
+        const { loading, data } = this.props.mails;
+        if(loading) return <Loader/>;
 
+        const mailItems = data.map((mail) => {
+            return (
+                <tr key={mail._id}>
+                    <td></td>
+                    <td>{mail.name}</td>
+                    <td>{mail.subject}</td>
+                    <td></td>
+                    <td>{mail.dtReceived}</td>
+                </tr>
+            );
+        });
+        
         return (
-            <div>{loader} Mail List</div>
+            <div>
+                <table className="table table-hover">
+                    <tbody>
+                        {mailItems}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
 
-export default MailList;
+export default connect((state,props) => {
+        return state;
+    }, 
+    { loadMails },
+    null,
+    { pure: false })
+(MailList);

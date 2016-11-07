@@ -8,8 +8,8 @@ import NotFoundPage from './routeHandlers/NotFoundPage/NotFoundPage';
 
 export default <Router history={history}>
     <Route path="/" component={App}>
-        <IndexRedirect to="/mails"/>
-        <Route path="mails" component={MailsPage}/>
+        <IndexRedirect to="/mails/inbox"/>
+        <Route path="mails/:mailBox" component={MailsPage}/>
         <Route path="users" component={UsersPage}/>
     </Route>
     <Route path="*" component={NotFoundPage}/>
