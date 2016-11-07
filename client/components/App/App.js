@@ -27,7 +27,7 @@ class App extends Component {
                         </Navbar.Header>
                         <Navbar.Collapse>
                             <Nav>
-                                <LinkContainer to="/mails">
+                                <LinkContainer to="/mails/inbox">
                                     <NavItem>Mails</NavItem>
                                 </LinkContainer>
                                 <LinkContainer to="/users">
