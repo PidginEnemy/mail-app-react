@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadMails } from '../../AC/mails';
+import { loadMails, setMailType } from '../../AC/mails';
 import Loader from '../Loader/Loader';
 
 class MailList extends Component {
     
     componentDidMount() {
-        const { loading, loadMails } = this.props;
+        const { loading, mailBox, currentMailType, loadMails, setMailType } = this.props;
+        if(currentMailType != mailBox)
+            setMailType(currentMailType);
         if(!loading)
             loadMails();
     }
 
     render() {
-
+        
         const { loading, data } = this.props;
         if(loading) return <Loader/>;
 
@@ -46,11 +48,12 @@ export default connect((state,props) => {
             return item.mailBoxType == mailBox;
         });
         return {
-            loading, 
+            loading,
+            mailBox,
             data: mailsInBox
         };
     },
-    { loadMails },
+    { loadMails, setMailType },
     null,
     { pure: false })
 (MailList);
