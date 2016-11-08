@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader';
 class MailList extends Component {
     
     componentDidMount() {
+        console.log(this.props);
         const { loading, mailBox, currentMailType, loadMails, setMailType } = this.props;
         if(currentMailType != mailBox)
             setMailType(currentMailType);
@@ -15,7 +16,7 @@ class MailList extends Component {
     }
 
     render() {
-        
+
         const { loading, data } = this.props;
         if(loading) return <Loader/>;
 
@@ -46,17 +47,17 @@ class MailList extends Component {
 }
 
 export default connect((state,props) => {
-        const { loading, data, mailBox } = state.mails;
-        const mailsInBox = data.filter((item) => {
-            return item.mailBoxType == mailBox;
-        });
-        return {
-            loading,
-            mailBox,
-            data: mailsInBox
-        };
-    },
-    { loadMails, setMailType },
-    null,
-    { pure: false })
+    const { loading, data, mailBox } = state.mails;
+    const mailsInBox = data.filter((item) => {
+        return item.mailBoxType == mailBox;
+    });
+    return {
+        loading,
+        mailBox,
+        data: mailsInBox
+    };
+},
+{ loadMails, setMailType },
+null,
+{ pure: false })
 (MailList);
