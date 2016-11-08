@@ -1,8 +1,11 @@
 import React from 'react';
+import Mail from '../../components/Mail/Mail';
 
 const MailPage = (props) => {
     return (
-        <div>mail page</div>
+        <div>
+            <Mail mailId={props.params.mailId}/>
+        </div>
     );
 };
 

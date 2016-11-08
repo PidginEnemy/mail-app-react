@@ -1,4 +1,4 @@
-import { START, SUCCESS, LOAD_MAILS } from '../constants';
+import { START, SUCCESS, LOAD_MAILS, LOAD_MAIL_BY_ID } from '../constants';
 
 const defaultMails = {
     data: [],
@@ -23,6 +23,7 @@ const defaultMails = {
         iconType: 'trash',
         mailType: 'trash'
     }],
+    currentMail: null,
     loading: false
 }
 export default(mails = defaultMails, action) => {
@@ -38,6 +39,10 @@ export default(mails = defaultMails, action) => {
         case LOAD_MAILS + SUCCESS:
             mails.loading = false;
             mails.data = response;
+            break;
+     
+        case LOAD_MAIL_BY_ID:
+            mails.currentMail = mails.data.filter(mail => mail._id == payload.mailId)[0];
             break;
     }
 
