@@ -3,4 +3,3 @@ export const SUCCESS = '_SUCCESS';
 export const FAIL = '_FAIL';
 
 export const LOAD_MAILS = 'LOAD_MAILS';
-export const SET_MAIL_TYPE = 'SET_MAIL_TYPE';

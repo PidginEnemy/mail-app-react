@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setMailType } from '../../AC/mails';
 import { Link } from 'react-router';
 import CSSModules from 'react-css-modules';
 import styles from './mail-filter-box.module.scss';
 
 class MailFilterBox extends Component {
-
-    handleSetMailType = () => {
-        const { setMailType, box } = this.props;
-        setMailType(box.mailType);
-    }
     
     render() {
         
@@ -20,7 +13,7 @@ class MailFilterBox extends Component {
         
         return (
             <Link to={ mailLink }>
-                <button className="btn btn-primary btn-block" styleName="mail-box-btn" onClick={ this.handleSetMailType }>
+                <button className="btn btn-primary btn-block" styleName="mail-box-btn">
                     <span className={ icon }></span>
                     <span styleName="mail-box-text">{ box.title }</span>
                 </button>
@@ -29,7 +22,4 @@ class MailFilterBox extends Component {
     }
 }
 
-export default connect(null,
-{ setMailType },
-null)
-(CSSModules(MailFilterBox, styles));
+export default CSSModules(MailFilterBox, styles);

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import history from '../../history';
 import moment from 'moment';
-import { loadMails, setMailType } from '../../AC/mails';
+import { loadMails } from '../../AC/mails';
 import Loader from '../Loader/Loader';
 
 class MailList extends Component {
     
     componentDidMount() {
-        console.log(this.props);
-        const { loading, mailBox, currentMailType, loadMails, setMailType } = this.props;
-        if(currentMailType != mailBox)
-            setMailType(currentMailType);
+        const { loading, loadMails } = this.props;
         if(!loading)
             loadMails();
+    }
+
+    handleMailRowClick = (mailId) => {
+        const { currentMailType } = this.props;
+        history.push(`/mails/${currentMailType}/${mailId}`);
     }
 
     render() {
@@ -24,7 +27,7 @@ class MailList extends Component {
             const mailAttachment = (mail.withAttachments) ? <span className="glyphicon glyphicon-paperclip"></span> : null;
             const mailDate = moment(mail.dtReceived).format('DD.MM.YYYY');
             return (
-                <tr key={mail._id}>
+                <tr key={mail._id} onClick={ () => this.handleMailRowClick(mail._id) }>
                     <td><img src={mail.picture} className="img-circle"/></td>
                     <td>{mail.name}</td>
                     <td>{mail.subject}</td>
@@ -47,17 +50,17 @@ class MailList extends Component {
 }
 
 export default connect((state,props) => {
-    const { loading, data, mailBox } = state.mails;
+    const { loading, data } = state.mails;
+    const { currentMailType } = props;
     const mailsInBox = data.filter((item) => {
-        return item.mailBoxType == mailBox;
+        return item.mailBoxType == currentMailType;
     });
     return {
         loading,
-        mailBox,
         data: mailsInBox
     };
 },
-{ loadMails, setMailType },
+{ loadMails },
 null,
 { pure: false })
 (MailList);

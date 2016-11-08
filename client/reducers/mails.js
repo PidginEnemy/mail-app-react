@@ -1,7 +1,6 @@
-import { START, SUCCESS, LOAD_MAILS, SET_MAIL_TYPE } from '../constants';
+import { START, SUCCESS, LOAD_MAILS } from '../constants';
 
 const defaultMails = {
-    mailBox: 'inbox',
     data: [],
     mailTypes: [{
         id: 1,
@@ -39,10 +38,6 @@ export default(mails = defaultMails, action) => {
         case LOAD_MAILS + SUCCESS:
             mails.loading = false;
             mails.data = response;
-            break;
-        
-        case SET_MAIL_TYPE:
-            mails.mailBox = payload.mailType;
             break;
     }
 

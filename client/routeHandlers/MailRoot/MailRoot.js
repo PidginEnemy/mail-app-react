@@ -1,7 +1,5 @@
 import React from 'react';
 import MailFilter from '../../components/MailFilter/MailFilter';
-import history from '../../history';
-window.browserHistory = history;
 
 const MailRoot = (props) => {
     return (
