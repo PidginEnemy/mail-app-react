@@ -12,6 +12,7 @@ export default <Router history={history}>
     <Route path="/" component={App}>
         <IndexRedirect to="/mails/inbox"/>
         <Route path="mails" component={MailRoot}>
+            <IndexRedirect to="/mails/inbox"/>
             <Route path=":mailBox" component={MailsListPage}/>
             <Route path=":mailBox/:mailId" component={MailPage}/>
         </Route>
