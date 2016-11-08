@@ -2,16 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import history from '../../history';
 import moment from 'moment';
-import { loadMails } from '../../AC/mails';
-import Loader from '../Loader/Loader';
 
 class MailList extends Component {
-    
-    componentDidMount() {
-        const { loading, loadMails } = this.props;
-        if(!loading)
-            loadMails();
-    }
 
     handleMailRowClick = (mailId) => {
         const { currentMailType } = this.props;
@@ -20,8 +12,7 @@ class MailList extends Component {
 
     render() {
 
-        const { loading, data } = this.props;
-        if(loading) return <Loader/>;
+        const { data } = this.props;
 
         const mailItems = data.map((mail) => {
             const mailAttachment = (mail.withAttachments) ? <span className="glyphicon glyphicon-paperclip"></span> : null;
@@ -50,17 +41,16 @@ class MailList extends Component {
 }
 
 export default connect((state,props) => {
-    const { loading, data } = state.mails;
+    const { data } = state.mails;
     const { currentMailType } = props;
     const mailsInBox = data.filter((item) => {
         return item.mailBoxType == currentMailType;
     });
     return {
-        loading,
         data: mailsInBox
     };
 },
-{ loadMails },
+null,
 null,
 { pure: false })
 (MailList);
