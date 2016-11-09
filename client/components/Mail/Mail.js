@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import history from '../../history';
 import moment from 'moment';
 
 class Mail extends Component {
@@ -19,6 +20,11 @@ class Mail extends Component {
                         <strong>{mail.name}</strong>
                         <p>{mail.email}</p>
                         <p>{mailDate}</p>
+                    </div>
+                    <div className="pull-right">
+                        <button className="btn btn-primary" onClick={() => history.goBack() }>
+                            <span className="glyphicon glyphicon-arrow-left"></span>
+                        </button>
                     </div>
                 </div>
                 <div className="col-xs-12">
