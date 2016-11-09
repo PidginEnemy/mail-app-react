@@ -1,0 +1,16 @@
+.mail-list {
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+.mail-list-row {
+  cursor: pointer;
+}
+.mail-list-row:nth-child(odd) {
+  background: #333;
+}
+
+@media (max-width:767px) {
+  .mail-list {
+    height: auto;
+  }
+}
