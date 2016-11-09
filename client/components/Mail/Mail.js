@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
-import { loadMailById } from '../../AC/mails';
 
 class Mail extends Component {
-
-    componentDidMount() {
-        const { mailId, loadMailById } = this.props;
-        loadMailById(mailId);
-    }
     
     render() {
         
         const { mail } = this.props;
-        if(!mail) return null;
 
         const mailDate = moment(mail.dtReceived).format('DD.MM.YYYY');
         const mailAttachmentUrl = `http://thecatapi.com/api/images/get?format=src&type=gif&size=small&guid=${mail.guid}`;
@@ -38,11 +30,4 @@ class Mail extends Component {
     }
 }
 
-export default connect(state => {
-    return {
-        mail: state.mails.currentMail
-    };
-},
-{ loadMailById },
-null,
-{ pure: false })(Mail);
+export default Mail;
