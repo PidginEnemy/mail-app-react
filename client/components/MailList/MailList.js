@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import history from '../../history';
 import moment from 'moment';
 import CSSModules from 'react-css-modules';
@@ -8,15 +7,15 @@ import styles from './mail-list.module.scss';
 class MailList extends Component {
 
     handleMailRowClick = (mailId) => {
-        const { currentMailType } = this.props;
-        history.push(`/mails/${currentMailType}/${mailId}`);
+        const currentLocation = history.getCurrentLocation().pathname;
+        history.push(`${currentLocation}/${mailId}`);
     }
 
     render() {
 
-        const { data } = this.props;
+        const { mails } = this.props;
 
-        const mailItems = data.map((mail) => {
+        const mailItems = mails.map((mail) => {
             const mailAttachment = (mail.withAttachments) ? <span className="glyphicon glyphicon-paperclip"></span> : null;
             const mailDate = moment(mail.dtReceived).format('DD.MM.YYYY');
             return (
@@ -42,17 +41,4 @@ class MailList extends Component {
     }
 }
 
-export default connect((state,props) => {
-    const { data } = state.mails;
-    const { currentMailType } = props;
-    const mailsInBox = data.filter((item) => {
-        return item.mailBoxType == currentMailType;
-    });
-    return {
-        data: mailsInBox
-    };
-},
-null,
-null,
-{ pure: false })
-(CSSModules(MailList,styles));
+export default CSSModules(MailList,styles);
