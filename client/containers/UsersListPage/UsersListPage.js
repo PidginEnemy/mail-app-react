@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { Component }  from 'react';
+import { connect } from 'react-redux';
+import UsersList from '../../components/UsersList/UsersList';
 
-const UsersListPage = (props) => {
-    return (
-        <div>
-            <h1>Users list page</h1>
-        </div>
-    );
-};
+class UsersListPage extends Component {
+    render() {
+        return (
+            <div>
+                <UsersList data={this.props.data}/>
+            </div>
+        );
+    }
+}
 
-export default UsersListPage;
+export default connect(state => {
+    return {
+        data: state.users.data
+    }
+})(UsersListPage);

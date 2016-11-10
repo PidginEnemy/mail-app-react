@@ -1,15 +1,15 @@
-.mail-list {
+.users-list {
   height: calc(100vh - 100px);
 }
-.mail-list-row {
+.users-list-row {
   cursor: pointer;
 }
-.mail-list-row:nth-child(odd) {
-  background: #333;
+.users-list-col {
+  vertical-align: middle !important;
 }
 
 @media (max-width:767px) {
-  .mail-list {
+  .users-list {
     height: auto;
   }
 }

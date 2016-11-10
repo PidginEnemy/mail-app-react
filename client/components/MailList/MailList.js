@@ -3,6 +3,7 @@ import history from '../../history';
 import moment from 'moment';
 import CSSModules from 'react-css-modules';
 import styles from './mail-list.module.scss';
+import ScrollArea from 'react-scrollbar';
 
 class MailList extends Component {
 
@@ -30,13 +31,13 @@ class MailList extends Component {
         });
         
         return (
-            <div styleName="mail-list">
+            <ScrollArea styleName="mail-list" speed={0.8}>
                 <table className="table table-hover">
                     <tbody>
                         {mailItems}
                     </tbody>
                 </table>
-            </div>
+            </ScrollArea>
         );
     }
 }
