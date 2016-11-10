@@ -1,4 +1,4 @@
-import { LOAD_USERS } from '../constants';
+import { LOAD_USERS, LOAD_USER_BY_ID } from '../constants';
 
 export function loadUsers() {
     return (dispatch, getState) => {
@@ -7,6 +7,15 @@ export function loadUsers() {
                 type: LOAD_USERS,
                 url: 'http://www.json-generator.com/api/json/get/bQzpeuaeiG?indent=2'
             });
+        }
+    }
+}
+
+export function loadUserById(userId) {
+    return {
+        type: LOAD_USER_BY_ID,
+        payload: {
+            userId
         }
     }
 }

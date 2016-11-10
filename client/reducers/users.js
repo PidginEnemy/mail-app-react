@@ -1,7 +1,8 @@
-import { START, SUCCESS, LOAD_USERS } from '../constants';
+import { START, SUCCESS, LOAD_USERS, LOAD_USER_BY_ID } from '../constants';
 
 const defaultUsers = {
     data: [],
+    currentUser: null,
     loading: false
 };
 export default (users = defaultUsers, action) => {
@@ -18,7 +19,11 @@ export default (users = defaultUsers, action) => {
             users.data = response;
             users.loading = false;
             break;
-
+        
+        case LOAD_USER_BY_ID:
+            const { userId } = payload;
+            users.currentUser = users.data.filter(user => user.id == userId)[0];
+            break;
     }
 
     return users;
