@@ -26,7 +26,7 @@ const defaultMails = {
     currentMail: null,
     loading: false
 }
-export default(mails = defaultMails, action) => {
+export default (mails = defaultMails, action) => {
 
     const { type, payload, response } = action;
 
