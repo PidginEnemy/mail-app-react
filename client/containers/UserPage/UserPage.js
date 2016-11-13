@@ -5,9 +5,13 @@ import UserForm from '../../components/UserForm/UserForm';
 
 class UserPage extends Component {
     
-    componentDidMount() {
+    componentWillMount() {
         const { params:{ userId }, loadUserById } = this.props;
         loadUserById(userId);
+    }
+
+    handleSubmit = (formValues) => {
+        console.log(formValues);
     }
     
     render() {
@@ -17,7 +21,7 @@ class UserPage extends Component {
             return null;
         
         return (
-            <UserForm user={user}/>
+            <UserForm initialValues={user} onSubmit={ this.handleSubmit }/>
         );
     }
 }
