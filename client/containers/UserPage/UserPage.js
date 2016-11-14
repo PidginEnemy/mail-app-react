@@ -16,8 +16,8 @@ class UserPage extends Component {
     
     render() {
         
-        const { user } = this.props;
-        if(!user)
+        const { user, params:{ userId } } = this.props;
+        if(!user || (user && userId && user.id != userId))
             return null;
         
         return (
