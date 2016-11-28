@@ -12,12 +12,10 @@ export function loadMails() {
 }
 
 export function loadMailById(mailId) {
-    return (dispatch, getState) => {
-        dispatch({
-            type: LOAD_MAIL_BY_ID,
-            payload: {
-                mailId
-            }
-        });
+    return {
+        type: LOAD_MAIL_BY_ID,
+        payload: {
+            mailId
+        }
     };
 }
