@@ -33,16 +33,22 @@ export default (mails = defaultMails, action) => {
     switch (type) {
 
         case LOAD_MAILS + START:
-            mails.loading = true;
+            return { ...mails,
+                loading: true    
+            };
             break;
         
         case LOAD_MAILS + SUCCESS:
-            mails.loading = false;
-            mails.data = response;
+            return { ...mails,
+                loading: false,
+                data: response
+            };
             break;
      
         case LOAD_MAIL_BY_ID:
-            mails.currentMail = mails.data.filter(mail => mail._id == payload.mailId)[0];
+            return { ...mails,
+                currentMail: mails.data.filter(mail => mail._id == payload.mailId)[0]
+            };
             break;
     }
 

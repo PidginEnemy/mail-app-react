@@ -12,17 +12,23 @@ export default (users = defaultUsers, action) => {
     switch(type) {
 
         case LOAD_USERS + START:
-            users.loading = true;
+            return { ...users,
+                loading: true
+            };
             break;
 
         case LOAD_USERS + SUCCESS:
-            users.data = response;
-            users.loading = false;
+            return { ...users,
+                data: response,
+                loading: false
+            };
             break;
         
         case LOAD_USER_BY_ID:
             const { userId } = payload;
-            users.currentUser = users.data.filter(user => user.id == userId)[0];
+            return { ...users,
+                currentUser: users.data.filter(user => user.id == userId)[0]
+            };
             break;
     }
 
