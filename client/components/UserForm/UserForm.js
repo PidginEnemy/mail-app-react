@@ -34,7 +34,7 @@ class UserForm extends Component {
               <label>Phone</label>
               <Field className="form-control" name="phone" component="input" type="text"/>
             </div>
-            <button className="btn btn-primary" type="submit">Save</button>
+            <button className="btn btn-primary" styleName="user-form-saveBtn" type="submit">Save</button>
             <a className="btn btn-default" title="Back to user list" onClick={ () => history.goBack() }>Cancel</a>
           </form>
         </div>
