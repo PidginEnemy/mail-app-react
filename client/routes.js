@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, IndexRedirect, IndexRoute} from 'react-router';
+import { Router, Route, IndexRedirect, IndexRoute } from 'react-router';
 import history from './history';
 import App from './components/App/App';
 import MailRoot from './containers/MailRoot/MailRoot';

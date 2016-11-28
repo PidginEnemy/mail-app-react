@@ -1,4 +1,4 @@
-import {START, SUCCESS, FAIL} from '../constants';
+import { START, SUCCESS, FAIL } from '../constants/common';
 
 export default store => next => action => {
   const {url, type, ...params} = action;

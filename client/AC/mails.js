@@ -1,4 +1,4 @@
-import {LOAD_MAILS, LOAD_MAIL_BY_ID} from '../constants';
+import { LOAD_MAILS, LOAD_MAIL_BY_ID } from '../constants/mail';
 
 export function loadMails() {
   return (dispatch, getState) => {

@@ -1,4 +1,5 @@
-import {START, SUCCESS, LOAD_MAILS, LOAD_MAIL_BY_ID} from '../constants';
+import { START, SUCCESS } from '../constants/common';
+import { LOAD_MAILS, LOAD_MAIL_BY_ID } from '../constants/mail';
 
 const defaultMails = {
   data: [],

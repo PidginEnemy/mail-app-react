@@ -11,7 +11,7 @@ class UserPage extends Component {
   }
 
   handleSubmit = (formValues) => {
-    console.log(formValues);
+    
   }
 
   render() {

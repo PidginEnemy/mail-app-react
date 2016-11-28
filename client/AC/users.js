@@ -1,4 +1,4 @@
-import {LOAD_USERS, LOAD_USER_BY_ID} from '../constants';
+import { LOAD_USERS, LOAD_USER_BY_ID } from '../constants/user';
 
 export function loadUsers() {
   return (dispatch, getState) => {

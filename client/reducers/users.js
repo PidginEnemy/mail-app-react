@@ -1,4 +1,5 @@
-import {START, SUCCESS, LOAD_USERS, LOAD_USER_BY_ID} from '../constants';
+import { START, SUCCESS } from '../constants/common';
+import { LOAD_USERS, LOAD_USER_BY_ID } from '../constants/user';
 
 const defaultUsers = {
   data: [],
