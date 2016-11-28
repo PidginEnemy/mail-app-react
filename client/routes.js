@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, IndexRedirect, IndexRoute } from 'react-router';
+import {Router, Route, IndexRedirect, IndexRoute} from 'react-router';
 import history from './history';
 import App from './components/App/App';
 import MailRoot from './containers/MailRoot/MailRoot';
@@ -11,17 +11,17 @@ import UserPage from './containers/UserPage/UserPage';
 import NotFoundPage from './containers/NotFoundPage/NotFoundPage';
 
 export default <Router history={history}>
-    <Route path="/" component={App}>
-        <IndexRedirect to="/mails/inbox"/>
-        <Route path="mails" component={MailRoot}>
-            <IndexRedirect to="/mails/inbox"/>
-            <Route path=":mailBox" component={MailsListPage}/>
-            <Route path=":mailBox/:mailId" component={MailPage}/>
-        </Route>
-        <Route path="users" component={UsersRoot}>
-            <IndexRoute component={UsersListPage}/>
-            <Route path=":userId" component={UserPage}/>
-        </Route>
+  <Route path="/" component={App}>
+    <IndexRedirect to="/mails/inbox"/>
+    <Route path="mails" component={MailRoot}>
+      <IndexRedirect to="/mails/inbox"/>
+      <Route path=":mailBox" component={MailsListPage}/>
+      <Route path=":mailBox/:mailId" component={MailPage}/>
     </Route>
-    <Route path="*" component={NotFoundPage}/>
+    <Route path="users" component={UsersRoot}>
+      <IndexRoute component={UsersListPage}/>
+      <Route path=":userId" component={UserPage}/>
+    </Route>
+  </Route>
+  <Route path="*" component={NotFoundPage}/>
 </Router>
