@@ -1,4 +1,4 @@
-import { LOAD_USERS, LOAD_USER_BY_ID } from '../constants/user';
+import { LOAD_USERS, LOAD_USER_BY_ID, SAVE_USER } from '../constants/user';
 
 export function loadUsers() {
   return (dispatch, getState) => {
@@ -8,7 +8,7 @@ export function loadUsers() {
         url: 'http://www.json-generator.com/api/json/get/bQzpeuaeiG?indent=2'
       });
     }
-  }
+  };
 }
 
 export function loadUserById(userId) {
@@ -17,5 +17,14 @@ export function loadUserById(userId) {
     payload: {
       userId
     }
-  }
+  };
+}
+
+export function saveUser(user) {
+  return {
+    type: SAVE_USER,
+    payload: {
+      user
+    }
+  };
 }

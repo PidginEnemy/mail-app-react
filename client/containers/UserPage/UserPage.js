@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {loadUserById} from '../../AC/users';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import history from '../../history';
+import { loadUserById, saveUser } from '../../AC/users';
 import UserForm from '../../components/UserForm/UserForm';
 
 class UserPage extends Component {
@@ -11,7 +12,9 @@ class UserPage extends Component {
   }
 
   handleSubmit = (formValues) => {
-    
+    const { saveUser } = this.props;
+    saveUser(formValues);
+    history.push(`/users`);
   }
 
   render() {
@@ -31,7 +34,10 @@ export default connect(state => {
       user: state.users.currentUser
     }
   },
-  {loadUserById},
+  { 
+    loadUserById,
+    saveUser
+  },
   null,
   {pure: false}
 )(UserPage);

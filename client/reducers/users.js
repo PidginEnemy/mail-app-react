@@ -1,5 +1,5 @@
 import { START, SUCCESS } from '../constants/common';
-import { LOAD_USERS, LOAD_USER_BY_ID } from '../constants/user';
+import { LOAD_USERS, LOAD_USER_BY_ID, SAVE_USER } from '../constants/user';
 
 const defaultUsers = {
   data: [],
@@ -8,7 +8,7 @@ const defaultUsers = {
 };
 export default (users = defaultUsers, action) => {
 
-  const {type, payload, response} = action;
+  const { type, payload, response } = action;
 
   switch (type) {
 
@@ -28,10 +28,22 @@ export default (users = defaultUsers, action) => {
       break;
 
     case LOAD_USER_BY_ID:
-      const {userId} = payload;
+      const { userId } = payload;
       return {
         ...users,
         currentUser: users.data.filter(user => user.id == userId)[0]
+      };
+      break;
+
+    case SAVE_USER:
+      const { user } = payload;
+      return { ...users,
+        data: users.data.map((item) => {
+          if(item.id === user.id)
+            item = user;
+          return item;
+        }),
+        currentUser: user
       };
       break;
   }
