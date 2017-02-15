@@ -34,6 +34,7 @@
     "react-bootstrap": "^0.30.6",
     "react-css-modules": "^3.7.10",
     "react-dom": "^15.3.2",
+    "react-hls": "git+https://github.com/foxford/react-hls.git",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
     "react-router-bootstrap": "^0.23.1",

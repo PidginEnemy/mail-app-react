@@ -20,7 +20,10 @@ module.exports = {
             {
                 test: /\.js?/,
                 loaders: ['babel'],
-                include: path.join(__dirname, 'client')
+                include: [
+                  path.join(__dirname, 'client'),
+                  /node_modules\/hls\.js/
+                ]
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.css$/, loader: 'style!css' },
