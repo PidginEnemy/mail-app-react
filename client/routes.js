@@ -8,7 +8,6 @@ import MailPage from './containers/MailPage/MailPage';
 import UsersRoot from './containers/UsersRoot/UsersRoot';
 import UsersListPage from './containers/UsersListPage/UsersListPage';
 import UserPage from './containers/UserPage/UserPage';
-import HLSPage from './containers/HLSPage/HLSPage';
 import NotFoundPage from './containers/NotFoundPage/NotFoundPage';
 
 export default <Router history={history}>
@@ -23,7 +22,6 @@ export default <Router history={history}>
       <IndexRoute component={UsersListPage}/>
       <Route path=":userId" component={UserPage}/>
     </Route>
-    <Route path="hls" component={HLSPage}></Route>
   </Route>
   <Route path="*" component={NotFoundPage}/>
 </Router>

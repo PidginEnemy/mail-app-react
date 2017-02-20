@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/build/'
   },
   module: {
     loaders: [
@@ -16,8 +16,7 @@ module.exports = {
         test: /\.js?/,
         loaders: ['babel'],
         include: [
-          path.join(__dirname, 'client'),
-          /node_modules\/hls\.js/
+          path.join(__dirname, 'client')
         ]
       },
       {
