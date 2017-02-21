@@ -7,6 +7,11 @@
 .mail-list-row:nth-child(odd) {
   background: #333;
 }
+.mail-icon {
+  width: 32px;
+  height: 32px;
+  background: url('../../assets/images/mail-icon.png');
+}
 
 @media (max-width:767px) {
   .mail-list {

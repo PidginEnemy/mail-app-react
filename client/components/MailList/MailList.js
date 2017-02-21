@@ -28,7 +28,7 @@ class MailList extends Component {
 
       return (
         <tr styleName="mail-list-row" key={ mail._id } onClick={ () => this.handleMailRowClick(mail._id) }>
-          <td><img src={ mail.picture } className="img-circle"/></td>
+          <td><div styleName="mail-icon" className="img-circle"/></td>
           <td>{ mail.name }</td>
           <td>{ mail.subject }</td>
           <td>{ mailAttachment }</td>
