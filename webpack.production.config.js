@@ -1,5 +1,6 @@
 var config = require('./webpack.common.config');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OfflinePlugin = require('offline-plugin');
 
 config.module.loaders.push([
   {
@@ -15,6 +16,9 @@ config.module.loaders.push([
     loader: ExtractTextPlugin.extract('style','!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader!sass-resources')
   }
 ]);
-config.plugins.push(new ExtractTextPlugin('style.min.css'));
+config.plugins.push(
+  new ExtractTextPlugin('style.min.css'),
+  new OfflinePlugin()
+);
 
 module.exports = config;
